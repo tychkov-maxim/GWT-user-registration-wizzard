@@ -8,14 +8,14 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.mdp.hometask.client.*;
 
 
-public class AddressAndNumberWidget extends Composite implements HasValidation {
+public class AddressAndNumberWidget extends Composite implements HasValidation, HasModel<AddressAndNumberDTO> {
 
     public static final int MAX_LENGTH_OF_NUMBER = 11;
     public static final String PHONE_NUMBER_MASK = "+9 999 ***** 99";
 
-    private FormField addressField;
-    private FormField phoneNumberField;
-    private FormField confirmationPhoneNumberField;
+    private FormField<TextBox, String> addressField;
+    private FormField<PhoneNumberWidget, String> phoneNumberField;
+    private FormField<PhoneNumberWidget, String> confirmationPhoneNumberField;
     private Validator notEmptyAddressValidator;
     private Validator isTheSameValidator;
     private Validator lengthValidator;
@@ -47,5 +47,17 @@ public class AddressAndNumberWidget extends Composite implements HasValidation {
         confirmationPhoneNumberField.clearErrors();
         return notEmptyAddressValidator.isValid(addressField) & lengthValidator.isValid(phoneNumberField, confirmationPhoneNumberField)
                 & isTheSameValidator.isValid(phoneNumberField, confirmationPhoneNumberField);
+    }
+
+    @Override
+    public void setModel(AddressAndNumberDTO model) {
+        addressField.setValue(model.getAddress());
+        phoneNumberField.setValue(model.getPhoneNumber());
+        confirmationPhoneNumberField.setValue(model.getPhoneNumber());
+    }
+
+    @Override
+    public AddressAndNumberDTO getModel() {
+        return new AddressAndNumberDTO(addressField.getValue(), phoneNumberField.getValue());
     }
 }
