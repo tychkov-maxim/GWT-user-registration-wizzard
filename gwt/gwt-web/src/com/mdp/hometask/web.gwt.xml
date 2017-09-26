@@ -1,0 +1,15 @@
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.8.0//EN"
+        "http://gwtproject.org/doctype/2.8.0/gwt-module.dtd">
+<module rename-to="mdp.web">
+
+
+    <inherits name='com.google.gwt.user.User'/>
+    <inherits name="com.google.gwt.user.theme.dark.Dark"/>
+    <inherits name="com.mdp.hometask.dto"/>
+    <inherits name="com.mdp.hometask.validation"/>
+
+    <entry-point class='com.mdp.hometask.client.HomeTask'/>
+
+    <servlet path='/HomeTaskService' class='com.mdp.hometask.server.HomeTaskServiceImpl'/>
+
+</module>
