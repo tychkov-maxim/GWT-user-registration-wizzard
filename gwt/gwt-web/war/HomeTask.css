@@ -1,0 +1,43 @@
+/** Add css rules here for your application. */
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+body, td, a, div, .p {
+    font-family: arial, sans-serif
+}
+
+.tasks-layout {
+    height: 100%;
+    width: 100%;
+}
+
+.validation {
+    color: red;
+    font-size: small;
+}
+
+.task1-panel, .task3-panel, .task4-panel {
+    border: solid black 1px;
+    padding: 20px
+}
+.content-panel {
+    padding: 20px;
+    border-right: dotted black 1px;
+    margin-right: 50px;
+}
+
+.form-field {
+    padding: 10px;
+}
+
+.gwt-result-table-widget td, .gwt-result-table-widget tr {
+    border: solid black 1px;
+}
+
+.gwt-date-box{
+
+}
