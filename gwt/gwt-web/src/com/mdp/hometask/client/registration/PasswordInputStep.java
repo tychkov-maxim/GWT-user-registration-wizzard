@@ -1,9 +1,10 @@
 package com.mdp.hometask.client.registration;
 
 import com.google.gwt.user.client.ui.Widget;
+import com.mdp.hometask.client.PasswordDTO;
 import com.mdp.hometask.client.widgets.PasswordWidget;
 
-public class PasswordInputStep implements Step {
+public class PasswordInputStep implements Step<PasswordDTO> {
 
     private PasswordWidget passwordWidget;
 
@@ -20,5 +21,15 @@ public class PasswordInputStep implements Step {
     @Override
     public Widget asWidget() {
         return passwordWidget;
+    }
+
+    @Override
+    public void setModel(PasswordDTO model) {
+        passwordWidget.setModel(model);
+    }
+
+    @Override
+    public PasswordDTO getModel() {
+        return passwordWidget.getModel();
     }
 }

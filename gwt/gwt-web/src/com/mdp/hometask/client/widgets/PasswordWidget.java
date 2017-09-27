@@ -1,15 +1,12 @@
 package com.mdp.hometask.client.widgets;
 
 import com.google.gwt.user.client.ui.*;
-import com.mdp.hometask.client.HasValidation;
-import com.mdp.hometask.client.NotEmptyParameterValidator;
-import com.mdp.hometask.client.TheSameParameterValidator;
-import com.mdp.hometask.client.Validator;
+import com.mdp.hometask.client.*;
 
-public class PasswordWidget extends Composite implements HasValidation {
+public class PasswordWidget extends Composite implements HasValidation, HasModel<PasswordDTO> {
 
-    private FormField passwordField ;
-    private FormField confirmationPasswordField;
+    private FormField<TextBox, String> passwordField ;
+    private FormField<TextBox, String> confirmationPasswordField;
     private Validator notEmptyValidator;
     private Validator isTheSameValidator;
 
@@ -36,4 +33,14 @@ public class PasswordWidget extends Composite implements HasValidation {
                 & isTheSameValidator.isValid(passwordField, confirmationPasswordField);
     }
 
+    @Override
+    public void setModel(PasswordDTO model) {
+        passwordField.setValue(model.getPassword());
+        confirmationPasswordField.setValue(model.getPassword());
+    }
+
+    @Override
+    public PasswordDTO getModel() {
+        return new PasswordDTO(passwordField.getValue());
+    }
 }

@@ -1,13 +1,16 @@
 package com.mdp.hometask.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.mdp.hometask.client.HomeTaskService;
-import com.mdp.hometask.client.Result;
-import com.mdp.hometask.client.SearchFormParameters;
+import com.mdp.hometask.client.*;
 
 import java.util.*;
 
 public class HomeTaskServiceImpl extends RemoteServiceServlet implements HomeTaskService {
+
+    private UsernameDTO usernameDTO;
+    private PasswordDTO passwordDTO;
+    private BirthAndGenderDTO birthAndGenderDTO;
+    private AddressAndNumberDTO addressAndNumberDTO;
 
     public Result getResults(SearchFormParameters formParam) {
         Result result = new Result();
@@ -22,6 +25,38 @@ public class HomeTaskServiceImpl extends RemoteServiceServlet implements HomeTas
         }
 
         return result;
+    }
+
+    @Override
+    public void sendUsernameDTO(UsernameDTO usernameDTO) {
+        this.usernameDTO = usernameDTO;
+    }
+
+    @Override
+    public void sendPasswordDTO(PasswordDTO passwordDTO) {
+        this.passwordDTO = passwordDTO;
+    }
+
+    @Override
+    public void sendBirthAndGenderDTO(BirthAndGenderDTO birthAndGenderDTO) {
+        this.birthAndGenderDTO = birthAndGenderDTO;
+    }
+
+    @Override
+    public void sendAddressAndNumberDTO(AddressAndNumberDTO addressAndNumberDTO) {
+        this.addressAndNumberDTO = addressAndNumberDTO;
+    }
+
+    @Override
+    public UserInfoDTO getUserInfoDTO() {
+        UserInfoDTO userInfoDTO = new UserInfoDTO();
+        userInfoDTO.setUsername(usernameDTO.getUsername());
+        userInfoDTO.setPassword(passwordDTO.getPassword());
+        userInfoDTO.setDateOfBirth(birthAndGenderDTO.getDateOfBirth());
+        userInfoDTO.setGender(birthAndGenderDTO.getGender());
+        userInfoDTO.setPhoneNumber(addressAndNumberDTO.getPhoneNumber());
+        userInfoDTO.setAddress(addressAndNumberDTO.getAddress());
+        return userInfoDTO;
     }
 
 }
