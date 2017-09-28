@@ -1,6 +1,6 @@
 package com.mdp.hometask.client;
 
-public class TheSameParameterValidator<T extends Validatable<Object>> extends AbstractValidator<Object, T> {
+public class TheSameParameterValidator<T extends Validatable<String>> extends AbstractValidator<String, T> {
 
     public TheSameParameterValidator(String errorMessage) {
         super(errorMessage);

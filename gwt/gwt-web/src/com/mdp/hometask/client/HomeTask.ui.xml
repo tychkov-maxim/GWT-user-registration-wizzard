@@ -1,0 +1,22 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:u='urn:import:com.mdp.hometask.client'>
+    <g:Grid addStyleNames="tasks-layout">
+        <g:row>
+            <g:customCell>
+                <u:Task1/>
+            </g:customCell>
+            <g:customCell>
+                <u:Task2/>
+            </g:customCell>
+        </g:row>
+        <g:row>
+            <g:customCell>
+                <u:Task3/>
+            </g:customCell>
+            <g:customCell>
+                <u:Task4/>
+            </g:customCell>
+        </g:row>
+    </g:Grid>
+</ui:UiBinder>

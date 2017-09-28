@@ -1,0 +1,16 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <g:Grid addStyleNames="gwt-result-table-widget">
+        <g:row>
+            <g:cell>
+                TEXT
+            </g:cell>
+            <g:cell>
+                CHECKBOX
+            </g:cell>
+            <g:cell>
+                DATE
+            </g:cell>
+        </g:row>
+    </g:Grid>
+</ui:UiBinder>

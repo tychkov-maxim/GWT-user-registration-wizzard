@@ -1,8 +1,11 @@
 package com.mdp.hometask.client;
 
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
@@ -15,15 +18,21 @@ public class Task1 extends Composite {
     public static final int FIRST_STEP = 0;
     public static final int COUNT_OF_STEP = 5;
 
-    private Panel root;
+    @UiField
+    public Button nextStepButton;
+    @UiField
+    public HorizontalPanel stepPanel;
+
     private ArrayList<Step> steps;
     private int currentStep;
-    private Button nextStepButton;
-    private HorizontalPanel stepPanel;
 
+    interface Task1UiBinder extends UiBinder<HorizontalPanel, Task1> {
+    }
+
+    private static Task1.Task1UiBinder ourUiBinder = GWT.create(Task1.Task1UiBinder.class);
 
     Task1() {
-
+        initWidget(ourUiBinder.createAndBindUi(this));
         steps = new ArrayList<>();
         steps.add(new UsernameInputStep());
         steps.add(new PasswordInputStep());
@@ -31,24 +40,10 @@ public class Task1 extends Composite {
         steps.add(new AddressAndNumberStep());
         steps.add(new FinishedRegistrationStep());
 
-        root = new HorizontalPanel();
-        root.setStyleName("task1-panel");
-        root.setTitle("TASK 1");
         currentStep = FIRST_STEP;
-        stepPanel = new HorizontalPanel();
-        stepPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-        stepPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 
-        stepPanel.setStyleName("content-panel");
         stepPanel.add(steps.get(currentStep).asWidget());
-
-        nextStepButton = new Button("Next step");
         nextStepButton.addClickHandler(new Presenter());
-        
-        root.add(stepPanel);
-        root.add(nextStepButton);
-
-        initWidget(root);
     }
 
     private int nextStep() {
