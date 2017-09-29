@@ -1,0 +1,12 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+              xmlns:g='urn:import:com.google.gwt.user.client.ui'
+              xmlns:u='urn:import:com.mdp.hometask.client.widgets'>
+    <g:FormPanel>
+        <g:VerticalPanel spacing="1">
+            <g:Label text="Search:"/>
+            <g:TextBox ui:field="textBox"/>
+            <g:CheckBox text="Random UUID" ui:field="checkBox"/>
+            <g:Button text="Search!" ui:field="submit"/>
+        </g:VerticalPanel>
+    </g:FormPanel>
+</ui:UiBinder>

@@ -1,0 +1,8 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:u='urn:import:com.mdp.hometask.client.widgets'>
+    <g:FlowPanel>
+        <u:SearchFormWidget ui:field="searchFormWidget"/>
+        <u:ResultTableWidget ui:field="resultTableWidget"/>
+    </g:FlowPanel>
+</ui:UiBinder>

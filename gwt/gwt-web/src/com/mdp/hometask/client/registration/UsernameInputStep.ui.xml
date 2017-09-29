@@ -1,0 +1,7 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:u='urn:import:com.mdp.hometask.client.widgets'>
+    <g:VerticalPanel>
+        <u:TextBoxFormField ui:field="usernameField"/>
+    </g:VerticalPanel>
+</ui:UiBinder>

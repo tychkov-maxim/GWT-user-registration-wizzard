@@ -1,22 +1,30 @@
 package com.mdp.hometask.client.registration;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.mdp.hometask.client.NotEmptyParameterValidator;
 import com.mdp.hometask.client.UsernameDTO;
 import com.mdp.hometask.client.Validator;
-import com.mdp.hometask.client.widgets.FormField;
 import com.google.gwt.user.client.ui.*;
+import com.mdp.hometask.client.widgets.TextBoxFormField;
 
 public class UsernameInputStep implements Step<UsernameDTO> {
 
-    private Panel panel;
-    private FormField<TextBox, String> usernameField;
+    interface UsernameInputStepUiBinder extends UiBinder<VerticalPanel, UsernameInputStep> {
+    }
+
+    private static UsernameInputStep.UsernameInputStepUiBinder
+            ourUiBinder = GWT.create(UsernameInputStep.UsernameInputStepUiBinder.class);
+
+    @UiField
+    public TextBoxFormField usernameField;
     private Validator notEmptyValidator;
 
-    public UsernameInputStep() {
-        panel = new VerticalPanel();
-        usernameField = new FormField<>("Username:", new TextBox());
-        panel.add(usernameField);
+    private VerticalPanel root;
 
+    public UsernameInputStep() {
+        root = ourUiBinder.createAndBindUi(this);
         notEmptyValidator = new NotEmptyParameterValidator("Username should not be empty");
     }
 
@@ -27,7 +35,7 @@ public class UsernameInputStep implements Step<UsernameDTO> {
     }
 
     public Widget asWidget() {
-        return panel;
+        return root;
     }
 
     @Override

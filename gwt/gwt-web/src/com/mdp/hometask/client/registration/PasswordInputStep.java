@@ -8,7 +8,6 @@ public class PasswordInputStep implements Step<PasswordDTO> {
 
     private PasswordWidget passwordWidget;
 
-
     public PasswordInputStep() {
         passwordWidget = new PasswordWidget();
     }

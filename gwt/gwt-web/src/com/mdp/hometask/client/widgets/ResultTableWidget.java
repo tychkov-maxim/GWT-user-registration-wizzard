@@ -1,29 +1,25 @@
 package com.mdp.hometask.client.widgets;
 
-import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Grid;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.user.client.ui.*;
 import com.mdp.hometask.client.Result;
 
 public class ResultTableWidget extends Composite {
 
     private Grid root;
 
+    interface ResultTableWidgetUiBinder extends UiBinder<Grid, ResultTableWidget> {
+    }
+
+    private static ResultTableWidget.ResultTableWidgetUiBinder ourUiBinder = GWT.create(ResultTableWidget.ResultTableWidgetUiBinder.class);
+
     public ResultTableWidget() {
-        root = new Grid(1,3);
-        root.setStyleName("gwt-result-table-widget");
-        initTitleFields();
+        root = ourUiBinder.createAndBindUi(this);
         initWidget(root);
     }
 
-    private void initTitleFields(){
-        root.setWidget(0,0, new Label("TEXT"));
-        root.setWidget(0,1, new Label("CHECKBOX"));
-        root.setWidget(0,2, new Label("DATE"));
-    }
-
-    public void addValue(Result result){
+        public void addValue(Result result){
         int rowCount = root.getRowCount();
         CheckBox checkBox = new CheckBox();
         checkBox.setValue(result.isCheck());
@@ -35,8 +31,4 @@ public class ResultTableWidget extends Composite {
         root.setWidget(rowCount, 2, new Label(result.getDate().toString()));
     }
 
-    public void clearTable(){
-        root.clear();
-        initTitleFields();
-    }
 }

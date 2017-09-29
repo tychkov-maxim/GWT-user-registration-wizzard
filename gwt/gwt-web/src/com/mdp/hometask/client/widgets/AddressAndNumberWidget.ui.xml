@@ -1,0 +1,13 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:u='urn:import:com.mdp.hometask.client.widgets'>
+    <g:VerticalPanel>
+      <u:TextBoxFormField title="Address:" ui:field="addressField"/>
+
+        <u:PhoneNumberField maxLengthOfNumber="11" phoneNumberMask="+9 999 ***** 99"
+                            title="Phone number:" ui:field="phoneNumberField"/>
+
+        <u:PhoneNumberField maxLengthOfNumber="11" phoneNumberMask="+9 999 ***** 99"
+                            title="Confirmation phone number:" ui:field="confirmationPhoneNumberField"/>
+    </g:VerticalPanel>
+</ui:UiBinder>

@@ -1,8 +1,12 @@
 package com.mdp.hometask.client.registration;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.mdp.hometask.client.BirthAndGenderDTO;
 import com.mdp.hometask.client.NotEmptyValidator;
 import com.mdp.hometask.client.Validator;
+import com.mdp.hometask.client.widgets.DateFormField;
 import com.mdp.hometask.client.widgets.FormField;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.datepicker.client.DateBox;
@@ -11,25 +15,22 @@ import java.util.Date;
 
 public class BirthAndGenderStep implements Step<BirthAndGenderDTO> {
 
-    private Panel panel;
-    private FormField<DateBox, Date> birthDateField;
-    private FormField genderField;
+    @UiField
+    public DateFormField birthDateField;
+    @UiField
+    public ListBox genderListBox;
+
     private Validator notEmptyValidator;
-    private ListBox genderListBox;
+    private VerticalPanel root;
+
+    interface BirthAndGenderStepUiBinder extends UiBinder<VerticalPanel, BirthAndGenderStep> {
+    }
+
+    private static BirthAndGenderStep.BirthAndGenderStepUiBinder
+            ourUiBinder = GWT.create(BirthAndGenderStep.BirthAndGenderStepUiBinder.class);
 
     public BirthAndGenderStep() {
-        panel = new VerticalPanel();
-
-        birthDateField = new FormField<>("Birth date:", new DateBox());
-
-        genderListBox = new ListBox();
-        genderListBox.addItem("Male");
-        genderListBox.addItem("Female");
-        genderField = new FormField("Gender:", genderListBox);
-
-        panel.add(birthDateField);
-        panel.add(genderField);
-
+        root = ourUiBinder.createAndBindUi(this);
         notEmptyValidator = new NotEmptyValidator("Specify birth date, please");
     }
 
@@ -40,7 +41,7 @@ public class BirthAndGenderStep implements Step<BirthAndGenderDTO> {
 
     @Override
     public Widget asWidget() {
-        return panel;
+        return root;
     }
 
     @Override
