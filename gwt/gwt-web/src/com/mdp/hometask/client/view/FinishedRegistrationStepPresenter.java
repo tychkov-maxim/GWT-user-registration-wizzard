@@ -1,16 +1,17 @@
-package com.mdp.hometask.client.registration;
+package com.mdp.hometask.client.view;
 
 import com.google.gwt.user.client.ui.*;
 import com.mdp.hometask.client.UserInfoDTO;
+import com.mdp.hometask.client.presenter.StepPresenter;
 import com.mdp.hometask.client.widgets.FormField;
 
-public class FinishedRegistrationStep implements Step<UserInfoDTO> {
+public class FinishedRegistrationStepPresenter implements StepPresenter<UserInfoDTO> {
 
     private Panel root;
 
-    public FinishedRegistrationStep() {
+    public FinishedRegistrationStepPresenter() {
         root = new VerticalPanel();
-        root.add(new Label("User registration finished successfully!"));
+        root.add(new Label("User view finished successfully!"));
     }
 
     @Override

@@ -5,6 +5,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.mdp.hometask.client.presenter.MainPresenter;
+import com.mdp.hometask.client.view.MainViewImpl;
 
 public class HomeTask implements EntryPoint {
 
@@ -14,6 +16,7 @@ public class HomeTask implements EntryPoint {
     private static HomeTask.HomeTaskUiBinder ourUiBinder = GWT.create(HomeTask.HomeTaskUiBinder.class);
 
     public void onModuleLoad() {
-        RootPanel.get().add(ourUiBinder.createAndBindUi(this));
+        MainPresenter mainPresenter = new MainPresenter(new MainViewImpl());
+        mainPresenter.go(RootPanel.get());
     }
 }

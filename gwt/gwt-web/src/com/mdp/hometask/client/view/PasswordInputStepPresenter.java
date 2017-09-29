@@ -1,14 +1,14 @@
-package com.mdp.hometask.client.registration;
+package com.mdp.hometask.client.view;
 
 import com.google.gwt.user.client.ui.Widget;
-import com.mdp.hometask.client.PasswordDTO;
+import com.mdp.hometask.client.presenter.StepPresenter;
 import com.mdp.hometask.client.widgets.PasswordWidget;
 
-public class PasswordInputStep implements Step<PasswordDTO> {
+public class PasswordInputStepPresenter implements StepPresenter<PasswordDTO> {
 
     private PasswordWidget passwordWidget;
 
-    public PasswordInputStep() {
+    public PasswordInputStepPresenter() {
         passwordWidget = new PasswordWidget();
     }
 

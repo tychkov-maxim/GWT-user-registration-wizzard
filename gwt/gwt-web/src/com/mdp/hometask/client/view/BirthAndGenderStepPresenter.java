@@ -1,4 +1,4 @@
-package com.mdp.hometask.client.registration;
+package com.mdp.hometask.client.view;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -6,14 +6,11 @@ import com.google.gwt.uibinder.client.UiField;
 import com.mdp.hometask.client.BirthAndGenderDTO;
 import com.mdp.hometask.client.NotEmptyValidator;
 import com.mdp.hometask.client.Validator;
+import com.mdp.hometask.client.presenter.StepPresenter;
 import com.mdp.hometask.client.widgets.DateFormField;
-import com.mdp.hometask.client.widgets.FormField;
 import com.google.gwt.user.client.ui.*;
-import com.google.gwt.user.datepicker.client.DateBox;
 
-import java.util.Date;
-
-public class BirthAndGenderStep implements Step<BirthAndGenderDTO> {
+public class BirthAndGenderStepPresenter implements StepPresenter<BirthAndGenderDTO> {
 
     @UiField
     public DateFormField birthDateField;
@@ -23,13 +20,13 @@ public class BirthAndGenderStep implements Step<BirthAndGenderDTO> {
     private Validator notEmptyValidator;
     private VerticalPanel root;
 
-    interface BirthAndGenderStepUiBinder extends UiBinder<VerticalPanel, BirthAndGenderStep> {
+    interface BirthAndGenderStepUiBinder extends UiBinder<VerticalPanel, BirthAndGenderStepPresenter> {
     }
 
-    private static BirthAndGenderStep.BirthAndGenderStepUiBinder
-            ourUiBinder = GWT.create(BirthAndGenderStep.BirthAndGenderStepUiBinder.class);
+    private static BirthAndGenderStepPresenter.BirthAndGenderStepUiBinder
+            ourUiBinder = GWT.create(BirthAndGenderStepPresenter.BirthAndGenderStepUiBinder.class);
 
-    public BirthAndGenderStep() {
+    public BirthAndGenderStepPresenter() {
         root = ourUiBinder.createAndBindUi(this);
         notEmptyValidator = new NotEmptyValidator("Specify birth date, please");
     }

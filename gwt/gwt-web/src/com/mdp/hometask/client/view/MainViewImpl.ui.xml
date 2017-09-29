@@ -1,0 +1,9 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <g:FlowPanel addStyleNames="task-panel">
+        <g:FlowPanel ui:field="widgetPanel" addStyleNames="content-panel"/>
+        <g:FlowPanel addStyleNames="next-step-button">
+            <g:Button ui:field="nextStepButton" text="Next step"/>
+        </g:FlowPanel>
+    </g:FlowPanel>
+</ui:UiBinder>

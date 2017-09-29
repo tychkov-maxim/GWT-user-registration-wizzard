@@ -1,14 +1,15 @@
-package com.mdp.hometask.client.registration;
+package com.mdp.hometask.client.view;
 
 import com.mdp.hometask.client.AddressAndNumberDTO;
+import com.mdp.hometask.client.presenter.StepPresenter;
 import com.mdp.hometask.client.widgets.AddressAndNumberWidget;
 import com.google.gwt.user.client.ui.Widget;
 
-public class AddressAndNumberStep implements Step<AddressAndNumberDTO> {
+public class AddressAndNumberStepPresenter implements StepPresenter<AddressAndNumberDTO> {
 
     private AddressAndNumberWidget addressAndNumberWidget;
 
-    public AddressAndNumberStep() {
+    public AddressAndNumberStepPresenter() {
         addressAndNumberWidget = new AddressAndNumberWidget();
     }
 

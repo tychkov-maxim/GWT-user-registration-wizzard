@@ -1,7 +1,0 @@
-<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-
-    <g:FlowPanel addStyleNames="task4-panel">
-       <g:Label text="TASK4"/>
-    </g:FlowPanel>
-</ui:UiBinder>
