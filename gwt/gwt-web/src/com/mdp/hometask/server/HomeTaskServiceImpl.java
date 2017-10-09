@@ -7,9 +7,7 @@ import java.util.*;
 
 public class HomeTaskServiceImpl extends RemoteServiceServlet implements HomeTaskService {
 
-    private UsernameDTO usernameDTO;
-    private PasswordDTO passwordDTO;
-    private BirthAndGenderDTO birthAndGenderDTO;
+    private UsernameAndPasswordDTO usernameAndPasswordDTO;
     private AddressAndNumberDTO addressAndNumberDTO;
 
     public Result getResults(SearchFormParameters formParam) {
@@ -28,18 +26,8 @@ public class HomeTaskServiceImpl extends RemoteServiceServlet implements HomeTas
     }
 
     @Override
-    public void sendUsernameDTO(UsernameDTO usernameDTO) {
-        this.usernameDTO = usernameDTO;
-    }
-
-    @Override
-    public void sendPasswordDTO(PasswordDTO passwordDTO) {
-        this.passwordDTO = passwordDTO;
-    }
-
-    @Override
-    public void sendBirthAndGenderDTO(BirthAndGenderDTO birthAndGenderDTO) {
-        this.birthAndGenderDTO = birthAndGenderDTO;
+    public void sendUsernameAndPasswordDTO(UsernameAndPasswordDTO usernameAndPasswordDTO) {
+        this.usernameAndPasswordDTO = usernameAndPasswordDTO;
     }
 
     @Override
@@ -50,10 +38,8 @@ public class HomeTaskServiceImpl extends RemoteServiceServlet implements HomeTas
     @Override
     public UserInfoDTO getUserInfoDTO() {
         UserInfoDTO userInfoDTO = new UserInfoDTO();
-        userInfoDTO.setUsername(usernameDTO.getUsername());
-        userInfoDTO.setPassword(passwordDTO.getPassword());
-        userInfoDTO.setDateOfBirth(birthAndGenderDTO.getDateOfBirth());
-        userInfoDTO.setGender(birthAndGenderDTO.getGender());
+        userInfoDTO.setUsername(usernameAndPasswordDTO.getUsername());
+        userInfoDTO.setPassword(usernameAndPasswordDTO.getPassword());
         userInfoDTO.setPhoneNumber(addressAndNumberDTO.getPhoneNumber());
         userInfoDTO.setAddress(addressAndNumberDTO.getAddress());
         return userInfoDTO;

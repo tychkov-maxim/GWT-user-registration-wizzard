@@ -1,0 +1,13 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:u='urn:import:com.mdp.hometask.client.widgets'>
+    <g:FlowPanel>
+        <g:Label>
+            Registration finished successfully!
+        </g:Label>
+        <u:TextBoxFormField title="Username:" ui:field="usernameField"/>
+        <u:TextBoxFormField title="Password:" ui:field="passwordField"/>
+        <u:TextBoxFormField title="Phone number:" ui:field="numberField"/>
+        <u:TextBoxFormField title="Address:" ui:field="addressField"/>
+    </g:FlowPanel>
+</ui:UiBinder>

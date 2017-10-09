@@ -1,11 +1,13 @@
 package com.mdp.hometask.client.presenter;
 
 
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.mdp.hometask.client.*;
+import com.mdp.hometask.client.event.NextPageEvent;
 import com.mdp.hometask.client.view.*;
 
 import java.io.Serializable;
@@ -13,20 +15,24 @@ import java.util.ArrayList;
 
 public class MainPresenter implements MainView.Presenter, Presenter {
     public static final int FIRST_STEP = 0;
-    public static final int COUNT_OF_STEP = 2;
+    public static final int COUNT_OF_STEP = 3;
 
     private HomeTaskServiceAsync service = HomeTaskService.App.getInstance();
     private ArrayList<StepPresenter> steps;
     private int currentStep;
     private MainView view;
+    private HandlerManager eventBus;
 
-    public MainPresenter(MainView view) {
+    public MainPresenter(MainView view, HandlerManager eventBus) {
 
         this.view = view;
+        this.eventBus = eventBus;
         view.setPresenter(this);
 
         steps = new ArrayList<>();
         steps.add(new UsernameAndPasswordPresenter(new UsernameAndPasswordView()));
+        steps.add(new AddressAndNumberPresenter(new AddressAndNumberView()));
+        steps.add(new FinishedRegistrationPresenter(new FinishedRegistrationView()));
 
         currentStep = FIRST_STEP;
 
@@ -49,6 +55,7 @@ public class MainPresenter implements MainView.Presenter, Presenter {
     public void onNextPage() {
         if (steps.get(currentStep).validate()) {
             processStep();
+            eventBus.fireEvent(new NextPageEvent());
         }
     }
 
@@ -66,7 +73,7 @@ public class MainPresenter implements MainView.Presenter, Presenter {
                 service.sendUsernameAndPasswordDTO((UsernameAndPasswordDTO) model, new StepManagerCallBack());
                 break;
             case 1:
-                service.sendPasswordDTO((PasswordDTO) model, new StepManagerCallBack());
+                service.sendAddressAndNumberDTO((AddressAndNumberDTO) model, new StepManagerCallBack());
                 break;
             default:
         }
@@ -96,7 +103,7 @@ public class MainPresenter implements MainView.Presenter, Presenter {
 
         @Override
         public void onSuccess(Void result) {
-            History.newItem("step " + currentStep);
+            History.newItem("step " + (currentStep + 1));
             view.setView(steps.get(nextStep()).asWidget());
 
             if (currentStep == COUNT_OF_STEP - 1) {

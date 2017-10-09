@@ -1,8 +1,6 @@
 package com.mdp.hometask.client.presenter;
 
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-import com.mdp.hometask.client.HasModel;
 import com.mdp.hometask.client.HasValidation;
 import com.mdp.hometask.client.UsernameAndPasswordDTO;
 
